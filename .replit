@@ -10,7 +10,7 @@ publicDir = "/"
 deploymentTarget = "static"
 
 [workflows]
-runButton = "Run Flask App"
+runButton = "Serve Clinic Page"
 
 [[workflows.workflow]]
 name = "Serve static"
@@ -33,6 +33,15 @@ mode = "sequential"
 [[workflows.workflow.tasks]]
 task = "shell.exec"
 args = "python app.py"
+
+[[workflows.workflow]]
+name = "Serve Clinic Page"
+author = 2004221
+mode = "parallel"
+
+[[workflows.workflow.tasks]]
+task = "shell.exec"
+args = "static-web-server -w ./.config/static-web-server.toml"
 
 [[ports]]
 localPort = 80

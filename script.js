@@ -1,85 +1,69 @@
-
 document.addEventListener('DOMContentLoaded', function() {
     const form = document.getElementById('appointmentForm');
-    const messageDiv = document.getElementById('message');
-    const submitBtn = form.querySelector('.submit-btn');
+    const successMessage = document.getElementById('successMessage');
 
     form.addEventListener('submit', async function(e) {
         e.preventDefault();
-        
-        // Disable submit button and show loading state
-        submitBtn.disabled = true;
-        submitBtn.textContent = 'Scheduling...';
-        
-        // Hide any previous messages
-        messageDiv.style.display = 'none';
-        
+
         // Get form data
         const formData = new FormData(form);
-        
-        // Get selected time slots
         const timeSlots = Array.from(document.getElementById('timeSlots').selectedOptions)
             .map(option => option.value);
-        
-        // Create appointment object
+
         const appointmentData = {
             name: formData.get('name'),
             phone: formData.get('phone'),
-            email: formData.get('email'),
-            timeSlots: timeSlots,
+            timeSlots: timeSlots.join(', '),
             reason: formData.get('reason'),
-            submissionDate: new Date().toISOString()
+            timestamp: new Date().toISOString()
         };
 
         try {
-            // Send data to backend
-            const response = await fetch('/submit-appointment', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify(appointmentData)
-            });
+            // Submit to Google Sheets
+            await submitToGoogleSheets(appointmentData);
 
-            const result = await response.json();
+            // Show success message
+            form.style.display = 'none';
+            successMessage.style.display = 'block';
 
-            if (response.ok) {
-                showMessage('Appointment request submitted successfully! We will contact you soon.', 'success');
+            // Reset form after 5 seconds
+            setTimeout(() => {
+                form.style.display = 'block';
+                successMessage.style.display = 'none';
                 form.reset();
-            } else {
-                showMessage(result.error || 'An error occurred. Please try again.', 'error');
-            }
+            }, 5000);
+
         } catch (error) {
+            alert('There was an error submitting your appointment. Please try again.');
             console.error('Error:', error);
-            showMessage('Network error. Please check your connection and try again.', 'error');
-        } finally {
-            // Re-enable submit button
-            submitBtn.disabled = false;
-            submitBtn.textContent = 'Schedule Appointment';
-        }
-    });
-
-    function showMessage(text, type) {
-        messageDiv.textContent = text;
-        messageDiv.className = `message ${type}`;
-        messageDiv.style.display = 'block';
-        
-        // Scroll to message
-        messageDiv.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
-    }
-
-    // Add some interactive feedback for the multi-select
-    const timeSlots = document.getElementById('timeSlots');
-    timeSlots.addEventListener('change', function() {
-        const selectedCount = this.selectedOptions.length;
-        const small = this.parentNode.querySelector('small');
-        
-        if (selectedCount > 0) {
-            small.textContent = `${selectedCount} time slot(s) selected`;
-            small.style.color = '#27ae60';
-        } else {
-            small.textContent = 'Hold Ctrl (Cmd on Mac) to select multiple time slots';
-            small.style.color = '#6c757d';
         }
     });
 });
+
+async function submitToGoogleSheets(data) {
+    // TODO: Replace with your Google Apps Script Web App URL
+    const GOOGLE_SCRIPT_URL = 'YOUR_GOOGLE_APPS_SCRIPT_URL_HERE';
+
+    // For now, we'll simulate the API call
+    console.log('Appointment data to be sent to Google Sheets:', data);
+
+    // Uncomment and modify this when you have your Google Apps Script URL
+    /*
+    const response = await fetch(GOOGLE_SCRIPT_URL, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(data)
+    });
+
+    if (!response.ok) {
+        throw new Error('Failed to submit appointment');
+    }
+
+    return await response.json();
+    */
+
+    // Simulate API delay
+    return new Promise(resolve => setTimeout(resolve, 1000));
+}

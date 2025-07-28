@@ -8,62 +8,58 @@
     <link href="style.css" rel="stylesheet" type="text/css" />
 </head>
 <body>
-    <header>
-        <div class="container">
+    <div class="container">
+        <header class="header">
             <h1>CoolClinic</h1>
             <p>Professional Healthcare Services</p>
-        </div>
-    </header>
+        </header>
 
-    <main class="container">
-        <section class="appointment-section">
-            <h2>Schedule Your Appointment</h2>
-            <form id="appointmentForm" class="appointment-form">
-                <div class="form-group">
-                    <label for="name">Full Name *</label>
-                    <input type="text" id="name" name="name" required>
+        <main class="main-content">
+            <div class="form-container">
+                <h2>Book Your Appointment</h2>
+                <form id="appointmentForm" class="appointment-form">
+                    <div class="form-group">
+                        <label for="name">Full Name *</label>
+                        <input type="text" id="name" name="name" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="phone">Phone Number *</label>
+                        <input type="tel" id="phone" name="phone" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="timeSlots">Preferred Time Slots *</label>
+                        <select id="timeSlots" name="timeSlots" multiple required>
+                            <option value="9:00 AM - 10:00 AM">9:00 AM - 10:00 AM</option>
+                            <option value="10:00 AM - 11:00 AM">10:00 AM - 11:00 AM</option>
+                            <option value="11:00 AM - 12:00 PM">11:00 AM - 12:00 PM</option>
+                            <option value="2:00 PM - 3:00 PM">2:00 PM - 3:00 PM</option>
+                            <option value="3:00 PM - 4:00 PM">3:00 PM - 4:00 PM</option>
+                            <option value="4:00 PM - 5:00 PM">4:00 PM - 5:00 PM</option>
+                        </select>
+                        <small>Hold Ctrl (Cmd on Mac) to select multiple time slots</small>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="reason">Reason for Visit *</label>
+                        <textarea id="reason" name="reason" rows="4" required placeholder="Please describe the reason for your visit..."></textarea>
+                    </div>
+
+                    <button type="submit" class="submit-btn">Book Appointment</button>
+                </form>
+
+                <div id="successMessage" class="success-message" style="display: none;">
+                    <h3>Appointment Request Submitted!</h3>
+                    <p>Thank you for choosing CoolClinic. We will contact you shortly to confirm your appointment.</p>
                 </div>
+            </div>
+        </main>
 
-                <div class="form-group">
-                    <label for="phone">Phone Number *</label>
-                    <input type="tel" id="phone" name="phone" required>
-                </div>
-
-                <div class="form-group">
-                    <label for="email">Email Address *</label>
-                    <input type="email" id="email" name="email" required>
-                </div>
-
-                <div class="form-group">
-                    <label for="timeSlots">Preferred Time Slots *</label>
-                    <select id="timeSlots" name="timeSlots" multiple required>
-                        <option value="9:00 AM - 10:00 AM">9:00 AM - 10:00 AM</option>
-                        <option value="10:00 AM - 11:00 AM">10:00 AM - 11:00 AM</option>
-                        <option value="11:00 AM - 12:00 PM">11:00 AM - 12:00 PM</option>
-                        <option value="2:00 PM - 3:00 PM">2:00 PM - 3:00 PM</option>
-                        <option value="3:00 PM - 4:00 PM">3:00 PM - 4:00 PM</option>
-                        <option value="4:00 PM - 5:00 PM">4:00 PM - 5:00 PM</option>
-                    </select>
-                    <small>Hold Ctrl (Cmd on Mac) to select multiple time slots</small>
-                </div>
-
-                <div class="form-group">
-                    <label for="reason">Reason for Visit *</label>
-                    <textarea id="reason" name="reason" rows="4" placeholder="Please describe the reason for your visit..." required></textarea>
-                </div>
-
-                <button type="submit" class="submit-btn">Schedule Appointment</button>
-            </form>
-
-            <div id="message" class="message"></div>
-        </section>
-    </main>
-
-    <footer>
-        <div class="container">
+        <footer class="footer">
             <p>&copy; 2024 CoolClinic. All rights reserved.</p>
-        </div>
-    </footer>
+        </footer>
+    </div>
 
     <script src="script.js"></script>
 </body>
