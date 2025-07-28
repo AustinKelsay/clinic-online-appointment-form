@@ -1,16 +1,70 @@
+
 <!DOCTYPE html>
-<html>
-
+<html lang="en">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width">
-  <title>replit</title>
-  <link href="style.css" rel="stylesheet" type="text/css" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CoolClinic - Online Appointments</title>
+    <link href="style.css" rel="stylesheet" type="text/css" />
 </head>
-
 <body>
-  Hello world
-  <script src="script.js"></script>
-</body>
+    <header>
+        <div class="container">
+            <h1>CoolClinic</h1>
+            <p>Professional Healthcare Services</p>
+        </div>
+    </header>
 
+    <main class="container">
+        <section class="appointment-section">
+            <h2>Schedule Your Appointment</h2>
+            <form id="appointmentForm" class="appointment-form">
+                <div class="form-group">
+                    <label for="name">Full Name *</label>
+                    <input type="text" id="name" name="name" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="phone">Phone Number *</label>
+                    <input type="tel" id="phone" name="phone" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="email">Email Address *</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="timeSlots">Preferred Time Slots *</label>
+                    <select id="timeSlots" name="timeSlots" multiple required>
+                        <option value="9:00 AM - 10:00 AM">9:00 AM - 10:00 AM</option>
+                        <option value="10:00 AM - 11:00 AM">10:00 AM - 11:00 AM</option>
+                        <option value="11:00 AM - 12:00 PM">11:00 AM - 12:00 PM</option>
+                        <option value="2:00 PM - 3:00 PM">2:00 PM - 3:00 PM</option>
+                        <option value="3:00 PM - 4:00 PM">3:00 PM - 4:00 PM</option>
+                        <option value="4:00 PM - 5:00 PM">4:00 PM - 5:00 PM</option>
+                    </select>
+                    <small>Hold Ctrl (Cmd on Mac) to select multiple time slots</small>
+                </div>
+
+                <div class="form-group">
+                    <label for="reason">Reason for Visit *</label>
+                    <textarea id="reason" name="reason" rows="4" placeholder="Please describe the reason for your visit..." required></textarea>
+                </div>
+
+                <button type="submit" class="submit-btn">Schedule Appointment</button>
+            </form>
+
+            <div id="message" class="message"></div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2024 CoolClinic. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
 </html>
