@@ -48,7 +48,7 @@ def submit_appointment():
         data = request.get_json()
         
         # Validate required fields
-        required_fields = ['name', 'phone', 'email', 'timeSlots', 'reason']
+        required_fields = ['name', 'phone', 'appointmentDate', 'timeSlots', 'reason']
         for field in required_fields:
             if not data.get(field):
                 return jsonify({'error': f'{field} is required'}), 400
@@ -70,20 +70,20 @@ def submit_appointment():
         
         # Prepare the row data
         timestamp = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
-        time_slots_str = ', '.join(data['timeSlots'])
+        time_slots_str = ', '.join(data['timeSlots']) if isinstance(data['timeSlots'], list) else data['timeSlots']
         
         row_data = [
             timestamp,
             data['name'],
             data['phone'],
-            data['email'],
+            data['appointmentDate'],
             time_slots_str,
             data['reason']
         ]
         
         # Add headers if the sheet is empty
         if len(sheet.get_all_records()) == 0:
-            headers = ['Timestamp', 'Name', 'Phone', 'Email', 'Preferred Time Slots', 'Reason for Visit']
+            headers = ['Timestamp', 'Name', 'Phone', 'Appointment Date', 'Preferred Time Slots', 'Reason for Visit']
             sheet.insert_row(headers, 1)
         
         # Append the new appointment data

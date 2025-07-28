@@ -3,6 +3,11 @@ document.addEventListener('DOMContentLoaded', function() {
     const successMessage = document.getElementById('successMessage');
     const submitBtn = form.querySelector('.submit-btn');
 
+    // Set minimum date to today
+    const dateInput = document.getElementById('appointmentDate');
+    const today = new Date().toISOString().split('T')[0];
+    dateInput.setAttribute('min', today);
+
     // Add input animations
     const inputs = form.querySelectorAll('input, textarea');
     inputs.forEach(input => {
@@ -35,9 +40,31 @@ document.addEventListener('DOMContentLoaded', function() {
             return;
         }
 
+        const selectedDate = formData.get('appointmentDate');
+        if (!selectedDate) {
+            alert('Please select a preferred date.');
+            submitBtn.innerHTML = originalContent;
+            submitBtn.disabled = false;
+            return;
+        }
+
+        // Check if selected date is in the past
+        const today = new Date();
+        const appointmentDate = new Date(selectedDate);
+        today.setHours(0, 0, 0, 0);
+        appointmentDate.setHours(0, 0, 0, 0);
+        
+        if (appointmentDate < today) {
+            alert('Please select a date that is today or in the future.');
+            submitBtn.innerHTML = originalContent;
+            submitBtn.disabled = false;
+            return;
+        }
+
         const appointmentData = {
             name: formData.get('name'),
             phone: formData.get('phone'),
+            appointmentDate: selectedDate,
             timeSlots: timeSlots.join(', '),
             reason: formData.get('reason'),
             timestamp: new Date().toISOString()
