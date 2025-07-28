@@ -1,14 +1,39 @@
 document.addEventListener('DOMContentLoaded', function() {
     const form = document.getElementById('appointmentForm');
     const successMessage = document.getElementById('successMessage');
+    const submitBtn = form.querySelector('.submit-btn');
+
+    // Add input animations
+    const inputs = form.querySelectorAll('input, textarea');
+    inputs.forEach(input => {
+        input.addEventListener('focus', function() {
+            this.parentElement.style.transform = 'translateY(-2px)';
+        });
+
+        input.addEventListener('blur', function() {
+            this.parentElement.style.transform = 'translateY(0)';
+        });
+    });
 
     form.addEventListener('submit', async function(e) {
         e.preventDefault();
 
+        // Add loading state
+        const originalContent = submitBtn.innerHTML;
+        submitBtn.innerHTML = '<div class="loading"></div> Processing...';
+        submitBtn.disabled = true;
+
         // Get form data
         const formData = new FormData(form);
-        const timeSlots = Array.from(document.getElementById('timeSlots').selectedOptions)
-            .map(option => option.value);
+        const timeSlots = Array.from(document.querySelectorAll('input[name="timeSlots"]:checked'))
+            .map(checkbox => checkbox.value);
+
+        if (timeSlots.length === 0) {
+            alert('Please select at least one preferred time slot.');
+            submitBtn.innerHTML = originalContent;
+            submitBtn.disabled = false;
+            return;
+        }
 
         const appointmentData = {
             name: formData.get('name'),
@@ -31,11 +56,15 @@ document.addEventListener('DOMContentLoaded', function() {
                 form.style.display = 'block';
                 successMessage.style.display = 'none';
                 form.reset();
+                submitBtn.innerHTML = originalContent;
+                submitBtn.disabled = false;
             }, 5000);
 
         } catch (error) {
             alert('There was an error submitting your appointment. Please try again.');
             console.error('Error:', error);
+            submitBtn.innerHTML = originalContent;
+            submitBtn.disabled = false;
         }
     });
 });
@@ -65,5 +94,5 @@ async function submitToGoogleSheets(data) {
     */
 
     // Simulate API delay
-    return new Promise(resolve => setTimeout(resolve, 1000));
+    return new Promise(resolve => setTimeout(resolve, 2000));
 }

@@ -1,61 +1,96 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>CoolClinic - Online Appointments</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
     <link href="style.css" rel="stylesheet" type="text/css" />
 </head>
 <body>
     <div class="container">
         <header class="header">
-            <h1>CoolClinic</h1>
+            <div class="logo">
+                <i class="fas fa-heartbeat"></i>
+                <h1>CoolClinic</h1>
+            </div>
             <p>Professional Healthcare Services</p>
         </header>
-
         <main class="main-content">
             <div class="form-container">
                 <h2>Book Your Appointment</h2>
                 <form id="appointmentForm" class="appointment-form">
                     <div class="form-group">
-                        <label for="name">Full Name *</label>
-                        <input type="text" id="name" name="name" required>
+                        <label for="name">
+                            <i class="fas fa-user"></i>
+                            Full Name *
+                        </label>
+                        <input type="text" id="name" name="name" required placeholder="Enter your full name">
                     </div>
-
                     <div class="form-group">
-                        <label for="phone">Phone Number *</label>
-                        <input type="tel" id="phone" name="phone" required>
+                        <label for="phone">
+                            <i class="fas fa-phone"></i>
+                            Phone Number *
+                        </label>
+                        <input type="tel" id="phone" name="phone" required placeholder="(555) 123-4567">
                     </div>
-
                     <div class="form-group">
-                        <label for="timeSlots">Preferred Time Slots *</label>
-                        <select id="timeSlots" name="timeSlots" multiple required>
-                            <option value="9:00 AM - 10:00 AM">9:00 AM - 10:00 AM</option>
-                            <option value="10:00 AM - 11:00 AM">10:00 AM - 11:00 AM</option>
-                            <option value="11:00 AM - 12:00 PM">11:00 AM - 12:00 PM</option>
-                            <option value="2:00 PM - 3:00 PM">2:00 PM - 3:00 PM</option>
-                            <option value="3:00 PM - 4:00 PM">3:00 PM - 4:00 PM</option>
-                            <option value="4:00 PM - 5:00 PM">4:00 PM - 5:00 PM</option>
-                        </select>
-                        <small>Hold Ctrl (Cmd on Mac) to select multiple time slots</small>
+                        <label>
+                            <i class="fas fa-clock"></i>
+                            Preferred Time Slots *
+                        </label>
+                        <div class="time-slots-container">
+                            <div class="time-slots-grid">
+                                <div class="time-slot">
+                                    <input type="checkbox" id="slot1" name="timeSlots" value="9:00 AM - 10:00 AM">
+                                    <label for="slot1">9:00 AM - 10:00 AM</label>
+                                </div>
+                                <div class="time-slot">
+                                    <input type="checkbox" id="slot2" name="timeSlots" value="10:00 AM - 11:00 AM">
+                                    <label for="slot2">10:00 AM - 11:00 AM</label>
+                                </div>
+                                <div class="time-slot">
+                                    <input type="checkbox" id="slot3" name="timeSlots" value="11:00 AM - 12:00 PM">
+                                    <label for="slot3">11:00 AM - 12:00 PM</label>
+                                </div>
+                                <div class="time-slot">
+                                    <input type="checkbox" id="slot4" name="timeSlots" value="2:00 PM - 3:00 PM">
+                                    <label for="slot4">2:00 PM - 3:00 PM</label>
+                                </div>
+                                <div class="time-slot">
+                                    <input type="checkbox" id="slot5" name="timeSlots" value="3:00 PM - 4:00 PM">
+                                    <label for="slot5">3:00 PM - 4:00 PM</label>
+                                </div>
+                                <div class="time-slot">
+                                    <input type="checkbox" id="slot6" name="timeSlots" value="4:00 PM - 5:00 PM">
+                                    <label for="slot6">4:00 PM - 5:00 PM</label>
+                                </div>
+                            </div>
+                        </div>
+                        <small>
+                            <i class="fas fa-info-circle"></i>
+                            Select multiple time slots to increase your appointment availability
+                        </small>
                     </div>
-
                     <div class="form-group">
-                        <label for="reason">Reason for Visit *</label>
-                        <textarea id="reason" name="reason" rows="4" required placeholder="Please describe the reason for your visit..."></textarea>
+                        <label for="reason">
+                            <i class="fas fa-stethoscope"></i>
+                            Reason for Visit *
+                        </label>
+                        <textarea id="reason" name="reason" rows="4" required placeholder="Please describe the reason for your visit, symptoms, or health concerns..."></textarea>
                     </div>
-
-                    <button type="submit" class="submit-btn">Book Appointment</button>
+                    <button type="submit" class="submit-btn">
+                        <i class="fas fa-calendar-check"></i>
+                        Book Appointment
+                    </button>
                 </form>
-
                 <div id="successMessage" class="success-message" style="display: none;">
+                    <i class="fas fa-check-circle"></i>
                     <h3>Appointment Request Submitted!</h3>
                     <p>Thank you for choosing CoolClinic. We will contact you shortly to confirm your appointment.</p>
                 </div>
             </div>
         </main>
-
         <footer class="footer">
             <p>&copy; 2024 CoolClinic. All rights reserved.</p>
         </footer>
