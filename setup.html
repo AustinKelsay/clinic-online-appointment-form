@@ -1,0 +1,677 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CoolClinic - Complete Setup Guide</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <link href="style.css" rel="stylesheet" type="text/css" />
+    <style>
+        .step-number {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 32px;
+            height: 32px;
+            background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
+            color: white;
+            border-radius: 50%;
+            font-weight: 700;
+            margin-right: 0.75rem;
+            flex-shrink: 0;
+        }
+
+        .step-box {
+            background: var(--background-primary);
+            border-radius: 16px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            border-left: 4px solid var(--primary-color);
+            box-shadow: var(--shadow-sm);
+        }
+
+        .step-box h4 {
+            display: flex;
+            align-items: center;
+            color: var(--text-primary);
+            font-size: 1.25rem;
+            margin-bottom: 1rem;
+        }
+
+        .visual-hint {
+            background: linear-gradient(135deg, rgba(14, 165, 233, 0.1), rgba(14, 165, 233, 0.05));
+            border: 2px solid rgba(14, 165, 233, 0.2);
+            border-radius: 12px;
+            padding: 1rem;
+            margin: 1rem 0;
+            font-size: 0.95rem;
+        }
+
+        .visual-hint i {
+            color: var(--accent-color);
+            margin-right: 0.5rem;
+        }
+
+        .warning-box {
+            background: linear-gradient(135deg, rgba(239, 68, 68, 0.1), rgba(239, 68, 68, 0.05));
+            border: 2px solid rgba(239, 68, 68, 0.2);
+            border-radius: 12px;
+            padding: 1rem;
+            margin: 1rem 0;
+            font-size: 0.95rem;
+        }
+
+        .warning-box i {
+            color: #ef4444;
+            margin-right: 0.5rem;
+        }
+
+        .check-list {
+            list-style: none;
+            padding: 0;
+            margin: 1rem 0;
+        }
+
+        .check-list li {
+            padding: 0.5rem 0 0.5rem 2rem;
+            position: relative;
+        }
+
+        .check-list li::before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            color: var(--success-color);
+            font-weight: 700;
+        }
+
+        .url-example {
+            background: #f3f4f6;
+            padding: 0.75rem 1rem;
+            border-radius: 8px;
+            font-family: monospace;
+            font-size: 0.875rem;
+            word-break: break-all;
+            margin: 0.5rem 0;
+        }
+
+        .highlight {
+            background: #fef3c7;
+            padding: 0.125rem 0.25rem;
+            border-radius: 4px;
+            font-weight: 600;
+        }
+
+        .maintenance-section {
+            background: linear-gradient(135deg, rgba(251, 191, 36, 0.1), rgba(251, 191, 36, 0.05));
+            border: 2px solid rgba(251, 191, 36, 0.3);
+            border-radius: 16px;
+            padding: 2rem;
+            margin-top: 2rem;
+        }
+
+        .tab-container {
+            border: 2px solid var(--border-color);
+            border-radius: 12px;
+            overflow: hidden;
+            margin: 1rem 0;
+        }
+
+        .tab-buttons {
+            display: flex;
+            background: var(--background-primary);
+            border-bottom: 2px solid var(--border-color);
+        }
+
+        .tab-button {
+            flex: 1;
+            padding: 1rem;
+            border: none;
+            background: none;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s;
+        }
+
+        .tab-button.active {
+            background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
+            color: white;
+        }
+
+        .tab-content {
+            padding: 1.5rem;
+            display: none;
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+
+        .troubleshooting-item {
+            background: var(--background-primary);
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin-bottom: 1rem;
+            border: 2px solid var(--border-color);
+        }
+
+        .troubleshooting-item h5 {
+            color: #ef4444;
+            margin-bottom: 0.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .troubleshooting-item p {
+            color: var(--text-secondary);
+            margin-bottom: 0.5rem;
+        }
+
+        .solution {
+            background: rgba(16, 185, 129, 0.1);
+            padding: 0.75rem;
+            border-radius: 8px;
+            border-left: 3px solid var(--success-color);
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <header class="header">
+            <div class="logo">
+                <i class="fas fa-heartbeat"></i>
+                <h1>CoolClinic</h1>
+            </div>
+            <p>Complete Setup Guide - Made Simple!</p>
+        </header>
+
+        <main class="main-content">
+            <div class="form-container setup-container">
+                <h2>🚀 Let's Set Up Your Appointment System!</h2>
+
+                <div class="instructions-box">
+                    <h3>What We're Building</h3>
+                    <p>We're creating an online appointment booking system that:</p>
+                    <ul class="check-list">
+                        <li>Shows available appointment times on your website</li>
+                        <li>Lets patients book appointments online</li>
+                        <li>Saves all appointments to a Google Spreadsheet</li>
+                        <li>Can be managed entirely through Google Sheets (no coding needed!)</li>
+                    </ul>
+                    <p><strong>Time needed:</strong> About 30-45 minutes for first-time setup</p>
+                </div>
+
+                <!-- PART 1: GOOGLE SHEETS -->
+                <div class="sheet-section">
+                    <h3>📊 Part 1: Create Your Google Spreadsheet</h3>
+
+                    <div class="step-box">
+                        <h4><span class="step-number">1</span>Create a New Spreadsheet</h4>
+                        <ol>
+                            <li>Open your web browser and go to <a href="https://sheets.google.com"
+                                    target="_blank">sheets.google.com</a></li>
+                            <li>Sign in with your Google account (or create one if needed)</li>
+                            <li>Click the big <strong>+ Blank</strong> button to create a new spreadsheet</li>
+                            <li>At the top left where it says "Untitled spreadsheet", click and rename it to:
+                                <strong>CoolClinic System</strong></li>
+                        </ol>
+
+                        <div class="visual-hint">
+                            <i class="fas fa-lightbulb"></i>
+                            <strong>Tip:</strong> Keep this spreadsheet open in a separate tab - you'll need it
+                            throughout the setup!
+                        </div>
+                    </div>
+
+                    <div class="step-box">
+                        <h4><span class="step-number">2</span>Save Your Spreadsheet ID</h4>
+                        <p>Look at your browser's address bar. You'll see a long URL like this:</p>
+                        <div class="url-example">
+                            https://docs.google.com/spreadsheets/d/<span
+                                class="highlight">1ABC123def456GHI789jkl</span>/edit#gid=0
+                        </div>
+                        <p>The highlighted part is your Spreadsheet ID. You'll need this later!</p>
+
+                        <div class="warning-box">
+                            <i class="fas fa-exclamation-triangle"></i>
+                            <strong>Important:</strong> Copy this ID somewhere safe (like a notepad). You'll need it in
+                            Part 3!
+                        </div>
+                    </div>
+
+                    <div class="step-box">
+                        <h4><span class="step-number">3</span>Set Up the Appointments Sheet</h4>
+                        <p>Your spreadsheet already has one sheet (look at the bottom - it says "Sheet1"). Let's set it
+                            up:</p>
+                        <ol>
+                            <li>Right-click on "Sheet1" at the bottom</li>
+                            <li>Click "Rename" and change it to: <strong>Appointments</strong></li>
+                            <li>Click on cell A1 and paste these headers:</li>
+                        </ol>
+
+                        <div class="code-block" id="appointments-headers-only">Timestamp Name Phone Appointment Date
+                            Preferred Time Slots Reason for Visit Status</div>
+                        <button class="submit-btn copy-btn" onclick="copyText('appointments-headers-only')">
+                            <i class="fas fa-copy"></i>
+                            Copy Headers
+                        </button>
+
+                        <div class="visual-hint">
+                            <i class="fas fa-info-circle"></i>
+                            After pasting, press Tab to move across cells. The headers should spread across columns A
+                            through G.
+                        </div>
+                    </div>
+
+                    <div class="step-box">
+                        <h4><span class="step-number">4</span>Create the Available Slots Sheet</h4>
+                        <ol>
+                            <li>At the bottom of your spreadsheet, click the <strong>+</strong> button to add a new
+                                sheet</li>
+                            <li>Right-click the new sheet and rename it to: <strong>Available_Slots</strong></li>
+                            <li>Click on cell A1 of this new sheet</li>
+                            <li>Copy and paste this entire table:</li>
+                        </ol>
+
+                        <div class="code-block" id="slots-complete">Date 9:00 AM - 10:00 AM 10:00 AM - 11:00 AM 11:00 AM
+                            - 12:00 PM 2:00 PM - 3:00 PM 3:00 PM - 4:00 PM 4:00 PM - 5:00 PM
+                            2024-01-15 AVAILABLE AVAILABLE BOOKED AVAILABLE AVAILABLE BLOCKED
+                            2024-01-16 AVAILABLE BOOKED AVAILABLE AVAILABLE BOOKED AVAILABLE
+                            2024-01-17 BLOCKED AVAILABLE AVAILABLE AVAILABLE AVAILABLE AVAILABLE
+                            2024-01-18 AVAILABLE AVAILABLE AVAILABLE BLOCKED AVAILABLE AVAILABLE
+                            2024-01-19 AVAILABLE AVAILABLE BOOKED AVAILABLE AVAILABLE BLOCKED
+                            2024-01-22 AVAILABLE AVAILABLE AVAILABLE AVAILABLE AVAILABLE AVAILABLE</div>
+                        <button class="submit-btn copy-btn" onclick="copyText('slots-complete')">
+                            <i class="fas fa-copy"></i>
+                            Copy Everything
+                        </button>
+
+                        <div class="warning-box">
+                            <i class="fas fa-calendar"></i>
+                            <strong>Note:</strong> You'll need to update these dates to current/future dates before
+                            going live!
+                        </div>
+                    </div>
+                </div>
+
+                <!-- PART 2: GOOGLE CLOUD -->
+                <div class="sheet-section">
+                    <h3>🔑 Part 2: Get Your Google API Credentials</h3>
+
+                    <div class="instructions-box">
+                        <p>This part might seem technical, but just follow each step carefully. We're getting special
+                            permission for your website to access your Google Sheets.</p>
+                    </div>
+
+                    <div class="step-box">
+                        <h4><span class="step-number">1</span>Go to Google Cloud Console</h4>
+                        <ol>
+                            <li>Open a new tab and go to <a href="https://console.cloud.google.com"
+                                    target="_blank">console.cloud.google.com</a></li>
+                            <li>Sign in with the same Google account you used for Sheets</li>
+                            <li>You might see a welcome screen - just click "Select a project" at the top</li>
+                        </ol>
+                    </div>
+
+                    <div class="step-box">
+                        <h4><span class="step-number">2</span>Create a New Project</h4>
+                        <ol>
+                            <li>Click "NEW PROJECT" (usually in the top right)</li>
+                            <li>For Project name, enter: <strong>CoolClinic Scheduler</strong></li>
+                            <li>Leave Location as "No organization"</li>
+                            <li>Click "CREATE"</li>
+                            <li>Wait about 30 seconds for it to create</li>
+                        </ol>
+
+                        <div class="visual-hint">
+                            <i class="fas fa-clock"></i>
+                            Google will show a notification when your project is ready. Make sure you're working in your
+                            new project (check the dropdown at the top of the page).
+                        </div>
+                    </div>
+
+                    <div class="step-box">
+                        <h4><span class="step-number">3</span>Enable Google Sheets API</h4>
+                        <ol>
+                            <li>In the search bar at the top, type "Google Sheets API" and press Enter</li>
+                            <li>Click on "Google Sheets API" from the results</li>
+                            <li>Click the big blue "ENABLE" button</li>
+                            <li>Wait for it to enable (about 10 seconds)</li>
+                        </ol>
+                    </div>
+
+                    <div class="step-box">
+                        <h4><span class="step-number">4</span>Create Service Account</h4>
+                        <ol>
+                            <li>Click the menu (☰) in the top left</li>
+                            <li>Find and click "APIs & Services" → "Credentials"</li>
+                            <li>Click "+ CREATE CREDENTIALS" at the top</li>
+                            <li>Choose "Service account"</li>
+                            <li>Fill in:
+                                <ul>
+                                    <li>Service account name: <strong>coolclinic-bot</strong></li>
+                                    <li>Service account ID: (it fills automatically)</li>
+                                </ul>
+                            </li>
+                            <li>Click "CREATE AND CONTINUE"</li>
+                            <li>Skip the optional steps by clicking "CONTINUE" then "DONE"</li>
+                        </ol>
+                    </div>
+
+                    <div class="step-box">
+                        <h4><span class="step-number">5</span>Download Your Secret Key</h4>
+                        <ol>
+                            <li>You should now see your service accounts list</li>
+                            <li>Click on "coolclinic-bot@..." (the email address)</li>
+                            <li>Click the "KEYS" tab at the top</li>
+                            <li>Click "ADD KEY" → "Create new key"</li>
+                            <li>Choose "JSON" format</li>
+                            <li>Click "CREATE"</li>
+                            <li>A file will download - <strong>save it somewhere safe!</strong></li>
+                        </ol>
+
+                        <div class="warning-box">
+                            <i class="fas fa-key"></i>
+                            <strong>Critical:</strong> This file is like a password. Keep it safe and never share it
+                            publicly!
+                        </div>
+                    </div>
+
+                    <div class="step-box">
+                        <h4><span class="step-number">6</span>Get the Service Account Email</h4>
+                        <ol>
+                            <li>Open the JSON file you just downloaded (use Notepad or any text editor)</li>
+                            <li>Look for a line that says "client_email"</li>
+                            <li>Copy the email address (looks like:
+                                coolclinic-bot@coolclinic-scheduler-123456.iam.gserviceaccount.com)</li>
+                            <li>Keep this file open - you'll need the whole contents soon!</li>
+                        </ol>
+                    </div>
+
+                    <div class="step-box">
+                        <h4><span class="step-number">7</span>Share Your Spreadsheet</h4>
+                        <ol>
+                            <li>Go back to your "CoolClinic System" Google Sheet</li>
+                            <li>Click the "Share" button (top right)</li>
+                            <li>Paste the service account email you just copied</li>
+                            <li>Make sure it's set to "Editor" (not Viewer)</li>
+                            <li>Uncheck "Notify people"</li>
+                            <li>Click "Share"</li>
+                        </ol>
+
+                        <div class="visual-hint">
+                            <i class="fas fa-robot"></i>
+                            You're giving your website's "robot assistant" permission to read and write to your
+                            spreadsheet!
+                        </div>
+                    </div>
+                </div>
+
+                <!-- PART 3: REPLIT -->
+                <div class="sheet-section">
+                    <h3>🔌 Part 3: Connect Everything in Replit</h3>
+
+                    <div class="step-box">
+                        <h4><span class="step-number">1</span>Open Replit Secrets</h4>
+                        <ol>
+                            <li>In your Replit project, look at the left sidebar</li>
+                            <li>Click the "Secrets" icon (looks like a lock 🔒)</li>
+                            <li>You'll see a place to add secrets</li>
+                        </ol>
+                    </div>
+
+                    <div class="step-box">
+                        <h4><span class="step-number">2</span>Add Your Google Credentials</h4>
+                        <ol>
+                            <li>Click "New Secret"</li>
+                            <li>For Key, type exactly: <strong>GOOGLE_SERVICE_ACCOUNT_KEY</strong></li>
+                            <li>For Value:
+                                <ul>
+                                    <li>Go back to your downloaded JSON file</li>
+                                    <li>Select ALL the text (Ctrl+A or Cmd+A)</li>
+                                    <li>Copy it (Ctrl+C or Cmd+C)</li>
+                                    <li>Paste it into the Value box</li>
+                                </ul>
+                            </li>
+                            <li>Click "Add Secret"</li>
+                        </ol>
+
+                        <div class="warning-box">
+                            <i class="fas fa-exclamation-circle"></i>
+                            Make sure you copy the ENTIRE file contents, including the { } brackets!
+                        </div>
+                    </div>
+
+                    <div class="step-box">
+                        <h4><span class="step-number">3</span>Add Your Spreadsheet ID</h4>
+                        <ol>
+                            <li>Click "New Secret" again</li>
+                            <li>For Key, type exactly: <strong>GOOGLE_SHEET_ID</strong></li>
+                            <li>For Value, paste the Spreadsheet ID you saved from Part 1, Step 2</li>
+                            <li>Click "Add Secret"</li>
+                        </ol>
+                    </div>
+
+                    <div class="step-box">
+                        <h4><span class="step-number">4</span>Test Everything!</h4>
+                        <ol>
+                            <li>Click the "Run" button at the top of Replit</li>
+                            <li>Wait for the app to start</li>
+                            <li>Open your website in a new tab</li>
+                            <li>Fill out the appointment form and submit</li>
+                            <li>Go back to your Google Sheet</li>
+                            <li>Check the "Appointments" sheet - you should see your test appointment!</li>
+                        </ol>
+
+                        <div class="visual-hint">
+                            <i class="fas fa-check-circle"></i>
+                            If you see your appointment in the spreadsheet, congratulations! Everything is working!
+                        </div>
+                    </div>
+                </div>
+
+                <!-- MAINTENANCE SECTION -->
+                <div class="maintenance-section">
+                    <h3>🛠️ Part 4: Daily Management (For Nurses/Staff)</h3>
+
+                    <p>Once everything is set up, managing appointments is easy! Here's what your staff needs to know:
+                    </p>
+
+                    <div class="tab-container">
+                        <div class="tab-buttons">
+                            <button class="tab-button active" onclick="showTab('daily')">Daily Tasks</button>
+                            <button class="tab-button" onclick="showTab('weekly')">Weekly Tasks</button>
+                            <button class="tab-button" onclick="showTab('managing')">Managing Slots</button>
+                        </div>
+
+                        <div id="daily" class="tab-content active">
+                            <h4>📅 Daily Tasks (5 minutes)</h4>
+                            <ol>
+                                <li><strong>Check New Appointments:</strong>
+                                    <ul>
+                                        <li>Open the Google Sheet</li>
+                                        <li>Go to "Appointments" sheet</li>
+                                        <li>Look for new entries (they appear at the bottom)</li>
+                                        <li>Call patients to confirm their appointments</li>
+                                        <li>Add "CONFIRMED" in the Status column (column G)</li>
+                                    </ul>
+                                </li>
+                                <li><strong>Update Tomorrow's Availability:</strong>
+                                    <ul>
+                                        <li>Go to "Available_Slots" sheet</li>
+                                        <li>Find tomorrow's date</li>
+                                        <li>Update any slots that need to be blocked</li>
+                                    </ul>
+                                </li>
+                            </ol>
+                        </div>
+
+                        <div id="weekly" class="tab-content">
+                            <h4>📋 Weekly Tasks (20 minutes)</h4>
+                            <ol>
+                                <li><strong>Add Next Week's Dates:</strong>
+                                    <ul>
+                                        <li>Go to "Available_Slots" sheet</li>
+                                        <li>Add 5-7 new rows at the bottom</li>
+                                        <li>Enter next week's dates (format: YYYY-MM-DD)</li>
+                                        <li>Set all slots to "AVAILABLE" initially</li>
+                                        <li>Block any known unavailable times</li>
+                                    </ul>
+                                </li>
+                                <li><strong>Archive Old Appointments:</strong>
+                                    <ul>
+                                        <li>In "Appointments" sheet, sort by date</li>
+                                        <li>Copy appointments older than 1 month</li>
+                                        <li>Paste them in a separate "Archive" spreadsheet</li>
+                                        <li>Delete the old rows to keep sheet fast</li>
+                                    </ul>
+                                </li>
+                                <li><strong>Review Patterns:</strong>
+                                    <ul>
+                                        <li>Look for popular time slots</li>
+                                        <li>Consider adding more availability during busy times</li>
+                                    </ul>
+                                </li>
+                            </ol>
+                        </div>
+
+                        <div id="managing" class="tab-content">
+                            <h4>🕐 Managing Time Slots</h4>
+                            <p><strong>Slot Status Options:</strong></p>
+                            <ul>
+                                <li><span class="status-badge status-available">AVAILABLE</span> - Patients can book
+                                    this slot</li>
+                                <li><span class="status-badge status-booked">BOOKED</span> - Already taken by a patient
+                                </li>
+                                <li><span class="status-badge status-blocked">BLOCKED</span> - Not available (lunch,
+                                    meetings, etc.)</li>
+                            </ul>
+
+                            <p><strong>Common Scenarios:</strong></p>
+                            <ul>
+                                <li><strong>Doctor calls in sick:</strong> Change all their slots to "BLOCKED"</li>
+                                <li><strong>Patient cancels:</strong> Change slot back to "AVAILABLE"</li>
+                                <li><strong>Double booking:</strong> Call patients to reschedule, update sheet</li>
+                                <li><strong>Add extra hours:</strong> Add new time columns or extend dates</li>
+                            </ul>
+
+                            <p><strong>Pro Tips:</strong></p>
+                            <ul>
+                                <li>Use conditional formatting to color-code statuses</li>
+                                <li>Add notes in column H for special cases</li>
+                                <li>Keep a "Waiting List" sheet for popular times</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- TROUBLESHOOTING -->
+                <div class="sheet-section">
+                    <h3>❓ Troubleshooting Common Issues</h3>
+
+                    <div class="troubleshooting-item">
+                        <h5><i class="fas fa-times-circle"></i> "Spreadsheet not found" Error</h5>
+                        <p>The website can't access your Google Sheet.</p>
+                        <div class="solution">
+                            <strong>Solution:</strong> Make sure you shared the spreadsheet with the service account
+                            email (the long one ending in .iam.gserviceaccount.com). It must have "Editor" permissions.
+                        </div>
+                    </div>
+
+                    <div class="troubleshooting-item">
+                        <h5><i class="fas fa-times-circle"></i> Appointments Not Showing Up</h5>
+                        <p>Form submits but nothing appears in the sheet.</p>
+                        <div class="solution">
+                            <strong>Solution:</strong> Check that both secret keys in Replit are correct. The JSON key
+                            should include ALL the text from the file, including brackets.
+                        </div>
+                    </div>
+
+                    <div class="troubleshooting-item">
+                        <h5><i class="fas fa-times-circle"></i> Can't Find Service Account Email</h5>
+                        <p>Don't know which email to share the sheet with.</p>
+                        <div class="solution">
+                            <strong>Solution:</strong> Open your downloaded JSON file in a text editor. Look for
+                            "client_email" - the email is right after it.
+                        </div>
+                    </div>
+
+                    <div class="troubleshooting-item">
+                        <h5><i class="fas fa-times-circle"></i> Google Cloud Console is Confusing</h5>
+                        <p>Can't find the right buttons or options.</p>
+                        <div class="solution">
+                            <strong>Solution:</strong> Make sure you're in the right project (check the dropdown at the
+                            top). Use the search bar to find "Google Sheets API" and "Credentials" directly.
+                        </div>
+                    </div>
+                </div>
+
+                <!-- FINAL CHECKLIST -->
+                <div class="instructions-box next-steps">
+                    <h3>✅ Final Checklist</h3>
+                    <p>Before going live, make sure you've:</p>
+                    <ul class="check-list">
+                        <li>Created both sheets: "Appointments" and "Available_Slots"</li>
+                        <li>Updated the dates in Available_Slots to current/future dates</li>
+                        <li>Shared the spreadsheet with your service account</li>
+                        <li>Added both secrets to Replit (GOOGLE_SERVICE_ACCOUNT_KEY and GOOGLE_SHEET_ID)</li>
+                        <li>Tested by submitting an appointment</li>
+                        <li>Trained staff on daily management</li>
+                        <li>Bookmarked the Google Sheet for easy access</li>
+                    </ul>
+
+                    <div class="visual-hint" style="margin-top: 1.5rem;">
+                        <i class="fas fa-rocket"></i>
+                        <strong>You're ready to go!</strong> Your online appointment system is now live. Patients can
+                        book appointments 24/7, and your staff can manage everything through Google Sheets!
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <footer class="footer">
+            <p>&copy; 2024 CoolClinic. All rights reserved.</p>
+        </footer>
+    </div>
+
+    <script>
+        function copyText(elementId) {
+            const element = document.getElementById(elementId);
+            const text = element.textContent;
+
+            navigator.clipboard.writeText(text).then(function () {
+                const btn = event.target.closest('.copy-btn');
+                const originalHTML = btn.innerHTML;
+                btn.innerHTML = '<i class="fas fa-check"></i> Copied!';
+                btn.style.background = 'linear-gradient(135deg, #10b981, #34d399)';
+
+                setTimeout(() => {
+                    btn.innerHTML = originalHTML;
+                    btn.style.background = '';
+                }, 2000);
+            }).catch(function (err) {
+                console.error('Could not copy text: ', err);
+                alert('Copy failed. Please select and copy manually.');
+            });
+        }
+
+        function showTab(tabName) {
+            // Hide all tabs
+            document.querySelectorAll('.tab-content').forEach(tab => {
+                tab.classList.remove('active');
+            });
+            document.querySelectorAll('.tab-button').forEach(btn => {
+                btn.classList.remove('active');
+            });
+
+            // Show selected tab
+            document.getElementById(tabName).classList.add('active');
+            event.target.classList.add('active');
+        }
+    </script>
+</body>
+
+</html>

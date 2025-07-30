@@ -35,9 +35,17 @@ body {
 }
 
 @keyframes gradientShift {
-    0% { background-position: 0% 50%; }
-    50% { background-position: 100% 50%; }
-    100% { background-position: 0% 50%; }
+    0% {
+        background-position: 0% 50%;
+    }
+
+    50% {
+        background-position: 100% 50%;
+    }
+
+    100% {
+        background-position: 0% 50%;
+    }
 }
 
 body::before {
@@ -47,7 +55,7 @@ body::before {
     left: 0;
     right: 0;
     bottom: 0;
-    background: 
+    background:
         radial-gradient(circle at 20% 20%, rgba(255, 255, 255, 0.1) 0%, transparent 50%),
         radial-gradient(circle at 80% 80%, rgba(255, 255, 255, 0.1) 0%, transparent 50%),
         radial-gradient(circle at 40% 60%, rgba(255, 255, 255, 0.05) 0%, transparent 50%);
@@ -79,6 +87,7 @@ body::before {
         opacity: 0;
         transform: translateY(-30px);
     }
+
     to {
         opacity: 1;
         transform: translateY(0);
@@ -141,6 +150,11 @@ body::before {
     overflow: hidden;
 }
 
+/* Setup page specific styles */
+.setup-container {
+    max-width: 1000px;
+}
+
 .form-container::before {
     content: '';
     position: absolute;
@@ -154,8 +168,13 @@ body::before {
 }
 
 @keyframes shimmer {
-    0% { background-position: -200% 0; }
-    100% { background-position: 200% 0; }
+    0% {
+        background-position: -200% 0;
+    }
+
+    100% {
+        background-position: 200% 0;
+    }
 }
 
 @keyframes slideInUp {
@@ -163,6 +182,7 @@ body::before {
         opacity: 0;
         transform: translateY(30px);
     }
+
     to {
         opacity: 1;
         transform: translateY(0);
@@ -189,6 +209,23 @@ body::before {
     height: 3px;
     background: linear-gradient(90deg, var(--primary-color), var(--accent-color));
     border-radius: 2px;
+}
+
+.form-container h3 {
+    color: var(--text-primary);
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin: 2rem 0 1rem 0;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.form-container h4 {
+    color: var(--text-secondary);
+    font-size: 1.1rem;
+    font-weight: 600;
+    margin: 1.5rem 0 0.75rem 0;
 }
 
 .appointment-form {
@@ -312,7 +349,7 @@ body::before {
     transition: left 0.5s;
 }
 
-.time-slot input[type="checkbox"]:checked + label {
+.time-slot input[type="checkbox"]:checked+label {
     border-color: var(--primary-color);
     background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
     color: white;
@@ -320,7 +357,7 @@ body::before {
     box-shadow: var(--shadow-md);
 }
 
-.time-slot input[type="checkbox"]:checked + label::before {
+.time-slot input[type="checkbox"]:checked+label::before {
     left: 100%;
 }
 
@@ -402,6 +439,13 @@ body::before {
     transform: none;
 }
 
+/* Setup page specific button styles */
+.copy-btn {
+    margin: 1rem 0;
+    padding: 1rem 2rem;
+    font-size: 1rem;
+}
+
 .success-message {
     text-align: center;
     padding: 2.5rem;
@@ -417,9 +461,11 @@ body::before {
         opacity: 0;
         transform: scale(0.9);
     }
+
     50% {
         transform: scale(1.02);
     }
+
     100% {
         opacity: 1;
         transform: scale(1);
@@ -444,6 +490,142 @@ body::before {
     color: var(--text-secondary);
 }
 
+/* Setup page specific styles */
+.instructions-box {
+    background: linear-gradient(135deg, rgba(14, 165, 233, 0.1), rgba(14, 165, 233, 0.05));
+    border: 2px solid rgba(14, 165, 233, 0.2);
+    border-radius: 16px;
+    padding: 1.5rem;
+    margin-bottom: 2rem;
+}
+
+.instructions-box ol,
+.next-steps ol {
+    padding-left: 1.5rem;
+}
+
+.instructions-box li,
+.next-steps li {
+    margin-bottom: 0.5rem;
+    color: var(--text-primary);
+}
+
+.sheet-section {
+    margin-bottom: 3rem;
+    padding: 2rem;
+    background: var(--background-primary);
+    border-radius: 16px;
+    border-left: 5px solid var(--primary-color);
+}
+
+.table-container {
+    background: white;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: var(--shadow-md);
+    margin: 1.5rem 0;
+    overflow-x: auto;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.875rem;
+}
+
+th,
+td {
+    border: 1px solid var(--border-color);
+    padding: 0.75rem;
+    text-align: left;
+}
+
+th {
+    background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
+    color: white;
+    font-weight: 600;
+    text-align: center;
+    font-size: 0.875rem;
+}
+
+td {
+    background: white;
+    color: var(--text-primary);
+}
+
+.status-available {
+    background-color: rgba(16, 185, 129, 0.2);
+    color: #047857;
+    font-weight: 600;
+}
+
+.status-booked {
+    background-color: rgba(239, 68, 68, 0.2);
+    color: #b91c1c;
+    font-weight: 600;
+}
+
+.status-blocked {
+    background-color: rgba(107, 114, 128, 0.2);
+    color: #4b5563;
+    font-weight: 600;
+}
+
+.note-box {
+    background: linear-gradient(135deg, rgba(251, 191, 36, 0.1), rgba(251, 191, 36, 0.05));
+    border: 2px solid rgba(251, 191, 36, 0.3);
+    border-radius: 12px;
+    padding: 1.25rem;
+    margin: 1rem 0;
+    font-size: 0.95rem;
+}
+
+.status-legend ul {
+    list-style: none;
+    padding: 0;
+    margin-top: 0.75rem;
+}
+
+.status-legend li {
+    margin-bottom: 0.5rem;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+}
+
+.status-badge {
+    padding: 0.25rem 0.75rem;
+    border-radius: 6px;
+    font-weight: 600;
+    font-size: 0.875rem;
+    display: inline-block;
+}
+
+.code-block {
+    background: var(--text-primary);
+    color: var(--background-primary);
+    padding: 1.25rem;
+    border-radius: 12px;
+    font-family: 'Courier New', monospace;
+    margin: 0.75rem 0;
+    overflow-x: auto;
+    font-size: 0.875rem;
+    box-shadow: var(--shadow-md);
+}
+
+.next-steps {
+    background: linear-gradient(135deg, rgba(16, 185, 129, 0.1), rgba(16, 185, 129, 0.05));
+    border: 2px solid rgba(16, 185, 129, 0.2);
+    border-radius: 16px;
+    padding: 1.5rem;
+    margin-top: 2rem;
+}
+
+.next-steps h3 {
+    color: var(--success-color);
+    margin-top: 0;
+}
+
 .footer {
     background: rgba(255, 255, 255, 0.95);
     backdrop-filter: blur(20px);
@@ -465,7 +647,9 @@ body::before {
 }
 
 @keyframes spin {
-    to { transform: rotate(360deg); }
+    to {
+        transform: rotate(360deg);
+    }
 }
 
 /* Responsive Design */
@@ -475,7 +659,8 @@ body::before {
         padding: 0 1rem;
     }
 
-    .header, .main-content {
+    .header,
+    .main-content {
         padding: 2rem 1rem;
     }
 
@@ -490,6 +675,16 @@ body::before {
 
     .time-slots-grid {
         grid-template-columns: 1fr;
+    }
+
+    .table-container {
+        font-size: 0.75rem;
+    }
+
+    th,
+    td {
+        padding: 0.5rem;
+        font-size: 0.75rem;
     }
 }
 
@@ -508,5 +703,14 @@ body::before {
 
     .form-container h2 {
         font-size: 1.75rem;
+    }
+
+    .sheet-section {
+        padding: 1rem;
+    }
+
+    .copy-btn {
+        padding: 0.75rem 1.5rem;
+        font-size: 0.9rem;
     }
 }
